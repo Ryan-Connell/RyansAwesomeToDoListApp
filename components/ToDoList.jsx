@@ -1,19 +1,42 @@
-import React from 'react';
-import {SafeAreaView, StyleSheet, Pressable, View, Text, ScrollView, TextInput, Button,} from 'react-native';
+import React, {Component} from 'react';
+import {
+  StyleSheet,
+  Pressable,
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  Button,
+} from 'react-native';
 
-function ToDoList({items}) {
+function ToDoList({tasks}) {
   return (
-    <ScrollView>
-      {items.map((value, index) => {
-        return (
-          <Pressable key={index}>
+    <>
+      <ScrollView>
+        {tasks.map((task, key) => (
+          <Pressable key={key}>
             <View style={[styles.task]}>
-              <Text style={styles.taskText}>{value}</Text>
+              <Text style={styles.taskText}>{task}</Text>
             </View>
           </Pressable>
-        );
-      })}
-    </ScrollView>
+        ))}
+        {/* <Pressable>
+          <View style={[styles.task, styles.completed]}>
+            <Text style={styles.taskText}>Do laundry</Text>
+          </View>
+        </Pressable>
+        <Pressable>
+          <View style={[styles.task]}>
+            <Text style={styles.taskText}>Go to gym</Text>
+          </View>
+        </Pressable>
+        <Pressable>
+          <View style={[styles.task, styles.completed]}>
+            <Text style={styles.taskText}>Walk dog</Text>
+          </View>
+        </Pressable> */}
+      </ScrollView>
+    </>
   );
 }
 
@@ -28,21 +51,6 @@ const styles = StyleSheet.create({
   },
   taskText: {
     fontSize: 16,
-  },
-  form: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginHorizontal: 20,
-    marginTop: 20,
-  },
-  input: {
-    flex: 1,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    paddingHorizontal: 10,
-    paddingVertical: 5,
-    marginRight: 10,
   },
 });
 
